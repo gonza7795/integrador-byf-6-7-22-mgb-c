@@ -1,0 +1,19 @@
+img {
+
+    
+
+  width: 800px;
+  height: 320px;
+  padding: 30px;
+ 
+
+}
+
+div {
+   display: grid;
+   place-items: center;
+ }
+
+
+
+

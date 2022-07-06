@@ -1,0 +1,56 @@
+.row {
+    padding: 20px;
+
+} 
+
+div {background: #316bb3;}
+
+
+
+
+h1, h3 {
+    display: inline;
+}
+
+
+
+
+@media (min-width: 992px) {
+    #logoutn {
+        
+        width: 300%;
+        border-radius: 100%;
+        box-shadow: 5px 5px 5px grey;
+        left: 3%;
+        top: 300px;
+    }
+}
+
+
+@media  (max-width: 991px) and (min-width: 576px)  {
+    
+    #logoutn {
+        
+        width: 15%;
+        border-radius: 100%;
+        box-shadow: 5px 5px 5px grey;
+        left: 3%;
+        top: 300px;
+    }
+
+}
+
+
+
+
+@media (max-width: 575px) {
+    #logoutn {
+        
+        width: 20%;
+        border-radius: 100%;
+        box-shadow: 5px 5px 5px grey;
+        left: 33%;
+        top: 600px;
+    }
+}
+
