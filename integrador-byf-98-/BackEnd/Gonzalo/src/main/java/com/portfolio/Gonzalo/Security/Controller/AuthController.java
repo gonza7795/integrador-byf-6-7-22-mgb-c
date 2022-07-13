@@ -4,7 +4,9 @@
  */
 package com.portfolio.Gonzalo.Security.Controller;
 
-import com.portfolio.Gonzalo.Dto.JwtDto;
+import com.portfolio.Gonzalo.Security.Dto.JwtDto;
+import com.portfolio.Gonzalo.Security.Dto.LoginUsuario;
+import com.portfolio.Gonzalo.Security.Dto.NuevoUsuario;
 import com.portfolio.Gonzalo.Security.Entity.Rol;
 import com.portfolio.Gonzalo.Security.Entity.Usuario;
 import com.portfolio.Gonzalo.Security.Enums.RolNombre;
@@ -64,15 +66,15 @@ public class AuthController {
         if(bindingResult.hasErrors())
             return new ResponseEntity(new Mensaje("Campos mal puestos o email inválido"), HttpStatus.BAD_REQUEST);
         
-        if(usuarioService.existsByNombreUsuario(nombreUsuario.getNombreUsuario()))
+        if(usuarioService.existsByNombreUsuario(nuevoUsuario.getNombreUsuario()))
             return new ResponseEntity(new Mensaje ("Ese nombre de usuario ya existe"), HttpStatus.BAD_REQUEST);
         
-          if(usuarioService.existsByEmail(nombreUsuario.getEmail()))
+          if(usuarioService.existsByEmail(nuevoUsuario.getEmail()))
             return new ResponseEntity(new Mensaje ("Ese email ya existe"), HttpStatus.BAD_REQUEST);
           
           
           Usuario usuario = new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(), nuevoUsuario.getEmail(),
-          passwordEnconder.econde(nuevoUsuario.getPassword()));
+          passwordEnconder.encode(nuevoUsuario.getPassword()));
           
           
           Set<Rol> roles = new HashSet<>();
