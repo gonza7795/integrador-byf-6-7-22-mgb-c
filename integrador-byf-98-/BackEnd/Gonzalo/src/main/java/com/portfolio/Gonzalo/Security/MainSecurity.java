@@ -19,6 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
@@ -63,6 +64,9 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
                .and()
                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
        
+       
+       http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+       
     }
 
     @Override
@@ -71,7 +75,8 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
         return super.authenticationManager();
  
     }
-
+    
+    @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean(); 
